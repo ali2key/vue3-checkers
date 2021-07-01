@@ -1,0 +1,21 @@
+{
+  "name": "vue3-checkers",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "main.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "chessboardjs-vue": "^1.0.9",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0"
+  },
+  "author": "ali2key",
+  "license": "ISC"
+}
