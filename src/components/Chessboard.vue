@@ -13,7 +13,12 @@
     @dragover.prevent
     @dragenter.prevent
     >
-      <Piece
+    <!-- dragenter&dragover
+        events causes error in
+        console #FIXME -->
+
+    <h1>{{tile.id}}</h1>
+      <!-- <Piece
       :id="tile.id"
       @dragstart="onDragStartBlack"
       @dblclick.prevent="killBlackPiece"
@@ -26,7 +31,7 @@
       @dragstart="onDragStartRed"
       @dblclick.prevent="killRedPiece"
       :pieceColor="tile.color =='grey' && [6, 7, 8].includes(tile.position) ? 'red' : ''"
-      />
+      /> -->
   </div>
   </div>
 </template>
@@ -53,7 +58,6 @@ export default {
       const tiles = ref(tiles_json)
       const pieces = ref(pieces_json)
       let activePiece = null
-      let counter = 0
 
       function onDragStartBlack(ev) {
         if(props.turn === false){
@@ -82,19 +86,19 @@ export default {
         }
       };
 
-      function killBlackPiece(ev){
-        const element = ev.target;
-        console.log(element)
-        element.style.display = "none";
-        context.emit('kill-black-piece')
-      };
+      // function killBlackPiece(ev){
+      //   const element = ev.target;
+      //   console.log(element)
+      //   element.style.display = "none";
+      //   context.emit('kill-black-piece')
+      // };
 
-      function killRedPiece(ev){
-        const element = ev.target;
-        console.log(element);
-        element.style.display = "none";
-        context.emit('kill-red-piece');
-      };
+      // function killRedPiece(ev){
+      //   const element = ev.target;
+      //   console.log(element);
+      //   element.style.display = "none";
+      //   context.emit('kill-red-piece');
+      // };
 
       return {
         chessboardRef,
@@ -104,8 +108,8 @@ export default {
         onDragStartBlack,
         onDragStartRed,
         onDrop,
-        killBlackPiece,
-        killRedPiece,
+        // killBlackPiece,
+        // killRedPiece,
       }
     }
 
@@ -113,6 +117,7 @@ export default {
 </script>
 
 <style scoped>
+
 @keyframes poof {
   to {
     opacity: 0;
@@ -120,13 +125,14 @@ export default {
 }
 
 @keyframes fadeIn {
-  0%{
+  0% {
     transform: rotateY(180deg);
   }
   100% {
    transform: rotateY(0deg);
   }
 }
+
  .chess-board {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -144,6 +150,7 @@ export default {
   min-width: 7em;
   /* animation: fadeIn 2s; */
 }
+
 .white {
   min-height: 7em;
   min-width: 7em;
